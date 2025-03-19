@@ -1,4 +1,6 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
+import { FaUser } from "react-icons/fa";
 
 function SignUp() {
   return (
@@ -8,7 +10,7 @@ function SignUp() {
     <div className="wrapper my-10 bg-blue-100 shadow-2xl rounded-2xl text-center w-1/2 h-9/10 m-auto px-10 py-8">
         <div
             className="profile_icon text-4xl bg-blue-300 m-auto my-3 rounded-full w-20 h-20 flex justify-center items-center ">
-            <i className="fa-solid fa-user text-blue-950"></i></div>
+           <FaUser/></div>
         <h1 className="text-2xl text-blue-950  py-3"> Inventory Mangement System</h1>
         <form>
             <input type="text" id="user_name" placeholder="User ID"
