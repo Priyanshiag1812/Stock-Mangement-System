@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom';
 import { FaUser } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Instance from '../../AxiosConfig';
+
+
 
 
 function Login() {
@@ -42,8 +45,10 @@ function Login() {
             className="profile_icon text-4xl bg-blue-300 m-auto my-3 rounded-full w-20 h-20 flex justify-center items-center ">
             <FaUser/></div>
         <h1 className="text-2xl  text-blue-950  py-3"> Inventory Mangement System</h1>
-        <form onClick={handleSubmit}>
         {message && <p>{message}</p>}
+        <form onClick={handleSubmit}>
+
+       
         <label className="text-2x1 block px-26 text-bold text-left text-blue-950  ">Email ID</label>
         
             <input type="email" id="email_id" placeholder="Email ID"   name="email"
