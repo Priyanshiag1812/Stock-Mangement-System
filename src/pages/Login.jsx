@@ -6,8 +6,6 @@ import { useState } from "react";
 import Instance from '../../AxiosConfig';
 
 
-
-
 function Login() {
 
   const navigate = useNavigate();
