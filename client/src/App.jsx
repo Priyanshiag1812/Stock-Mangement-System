@@ -1,5 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-// import First from "./pages/First";
+import { AuthProvider } from "./context/AuthContext"; 
 import AddInventory from "./pages/AddInventory";
 import InventoryTable from "./pages/InventoryTable";
 import ChangeInventory from "./pages/ChangeInventory";
@@ -13,31 +13,35 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import PageNotFound from "./pages/PageNotFound";
 import First from "./pages/First";
+import ProtectedRoute from "./components/ProtectedRouter";
 
 const router = createBrowserRouter([
   {
-    // path: "/", element: <First />
+    
     path: "/", element: <First/>,
     children: [
-      { path: "/", element: <AddInventory /> },
-      { path: "/inventory-table", element: <InventoryTable /> },
-      { path: "/add-inventory", element: <AddInventory /> },
-      { path: "/change-inventory", element: <ChangeInventory /> },
-      { path : "/issue-inventory", element: <IssueInventory />},
-      { path: "/return-inventory", element: <ReturnInventory /> },
-      { path: "/report", element: <Report /> },
-      { path: "/summary", element: <Summary/> },
-      {path :"/threshold", element: <Threshold />},
-      {path: "/user_profile", element: <UserProfile />},
-      { path: "*", element: <PageNotFound /> },
-      { path: "/login", element: <Login /> },
-      { path: "/signUp", element: <SignUp /> },
+      { path: "/", element:(<ProtectedRoute><AddInventory /></ProtectedRoute>)  },
+      { path: "/inventory-table", element: (<ProtectedRoute><InventoryTable /></ProtectedRoute> )},
+      { path: "/add-inventory", element:(<ProtectedRoute><AddInventory /></ProtectedRoute>)  },
+      { path: "/change-inventory", element: (<ProtectedRoute><ChangeInventory /></ProtectedRoute>) },
+      { path : "/issue-inventory", element:(<ProtectedRoute><IssueInventory /></ProtectedRoute>) },
+      { path: "/return-inventory", element: (<ProtectedRoute><ReturnInventory /></ProtectedRoute>) },
+      { path: "/report", element: (<ProtectedRoute><Report /></ProtectedRoute> )},
+      { path: "/summary", element:(<ProtectedRoute><Summary/></ProtectedRoute>)  },
+      {path :"/threshold", element: (<ProtectedRoute><Threshold /></ProtectedRoute>)},
+      {path: "/user_profile", element: (<ProtectedRoute><UserProfile /></ProtectedRoute>)},
+      { path: "*", element: (<PageNotFound /> )},
+      { path: "/login", element: (<Login /> )},
+      { path: "/signUp", element:(<SignUp />)  },
     ],
   },
 ]);
 
 function App() {
-  return <RouterProvider router={router} />;
+  return
+   <AuthProvider>
+   <RouterProvider router={router} />
+ </AuthProvider>
 }
 
 export default App;
